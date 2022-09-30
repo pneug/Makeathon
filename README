@@ -1,1 +1,2 @@
-RUN APP: npx expo start
+Run App: npx expo start
+Update dependency's: npm install
