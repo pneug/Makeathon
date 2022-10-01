@@ -6,6 +6,7 @@ import HomeScreen from '../screens/HomeScreen';
 import CameraScreen from '../screens/CameraScreen'
 import WeatherScreen from '../screens/WeatherScreen';
 import WarningScreen from '../screens/WarningScreen';
+import { StackActions } from '@react-navigation/native';
 
 const screens = {
     Home: {

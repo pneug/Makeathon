@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native-web';
+import { View, Text } from 'react-native';
 
 function ProfileStack(props) {
     return (
