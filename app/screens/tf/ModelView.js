@@ -36,10 +36,11 @@ export function ModelView() {
     setCapturedImage(photo)
   }
   return (<View style={styles.container}>
-            <PredictionList predictions={[]} /> 
-            <View style={styles.container}>
               {previewVisible && capturedImage ? 
-                <CameraPreview photo={capturedImage} /> :
+                <View style={styles.container}>
+                  <PredictionList predictions={[]} /> 
+                  <CameraPreview photo={capturedImage} />
+                </View> :
                 <Camera 
                   style={styles.camera}
                   ref={(r) => {camera = r}}>
@@ -53,7 +54,6 @@ export function ModelView() {
                   </View>
                 </Camera>
               }
-            </View>
           </View>
           );
   // const model = useTensorFlowModel(mobilenet);
