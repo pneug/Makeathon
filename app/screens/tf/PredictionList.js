@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   container: {
     zIndex: 100,
     position: "absolute",
-    bottom: margin,
+    top: margin,
     left: margin,
     right: margin,
     backgroundColor: "rgba(255,255,255,0.8)",
