@@ -1,30 +1,21 @@
 import React from 'react';
-import {createStackNavigator} from 'react-navigation-stack';
-import {createAppContainer} from 'react-navigation';
-import {createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createStackNavigator } from "@react-navigation/stack"
 import HomeScreen from '../screens/HomeScreen';
 import CameraScreen from '../screens/CameraScreen'
 import WeatherScreen from '../screens/WeatherScreen';
 import WarningScreen from '../screens/WarningScreen';
-import { StackActions } from '@react-navigation/native';
 
-const screens = {
-    Home: {
-        screen: HomeScreen
-    },
-    Camera: {
-        screen: CameraScreen
-    },
-    Warning: {
-        screen: WarningScreen
-    },
-    Weather: {
-        screen: WeatherScreen
-    }
+const Stack = createStackNavigator()
+
+const HomeStackScreenNavigator = () => {
+    return (<Stack.Navigator>
+                <Stack.Screen name = 'Home' component = {HomeScreen} options={{ headerShown: false }}/>
+                <Stack.Screen name = 'Camera' component = {CameraScreen} options={{ headerShown: false }}/>
+                <Stack.Screen name = 'Warning' component = {WarningScreen} options={{ headerShown: false }}/>
+                <Stack.Screen name = 'Weather' component = {WeatherScreen} options={{ headerShown: false }}/>
+            </Stack.Navigator>);
 }
 
-const HomeStack = createStackNavigator(screens)
-
-export default createAppContainer(HomeStack)
+export default HomeStackScreenNavigator
 
 
