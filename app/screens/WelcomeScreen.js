@@ -1,28 +1,85 @@
-import React, {Component} from 'react';
-import {StyleSheet,
-        SafeAreaView,
-        Image,
-        View,
-        Text, 
-        FlatList,
-        TouchableOpacity} from 'react-native';
+import React from 'react';
+import {
+    StyleSheet,
+    SafeAreaView,
+    View
+} from 'react-native';
+import { Title } from 'react-native-paper';
+import { ScrollView } from 'react-native-gesture-handler';
+import { BigCard, SmallCard } from '../components/Cards';
 
 function WelcomeScreen({navigation}) {
 
+
     const cameraPressHandler = () => {
-        navigation.navigate('Camera');
+        navigation.navigate('CameraScreen');
     }
     const warningPressHandler = () => {
-        navigation.navigate('Warning');
-    } 
+        navigation.navigate('WarningScreen');
+    }
     const weatherPressHandler = () => {
-        navigation.navigate('Weather');
+        navigation.navigate('WeatherScreen');
     }
 
 
     return (
-        <View style = {styles.background}>
-            <View style = {styles.topView}>
+        <View style={styles.container}>
+            <SafeAreaView>
+                <ScrollView>
+                    <BigCard
+                        price={" "}
+                        image={require("../assets/images/vegetables.png")}
+                        buttonText={"SCAN TOMATO"}
+                        buttonColor={"#4383FF"}
+                        onClickButton={cameraPressHandler}
+                    />
+                    <View style={styles.containerPadding}>
+                        <Title>What's New</Title>
+                    </View>
+
+                    <SmallCard
+                        title={"Regional Warning"}
+                        subTitle={" "}
+                        profile={require("../assets/regional-warning-icon.png")}
+                        onPress={warningPressHandler}
+                    />
+
+                    <SmallCard
+                        title={"Weather"}
+                        subTitle={" "}
+                        profile={require("../assets/weather-icon.png")}
+                        onPress={weatherPressHandler}
+                    />
+                    
+
+
+                    {/* <View style={styles.functionView}>
+                        <TouchableOpacity
+                            onPress={warningPressHandler}
+                            style={styles.warningButton} >
+                            <Image
+                                source={require('../assets/regional-warning-icon.png')}
+                                style={styles.ButtonIcon}
+                            />
+                            <Text style={styles.ButtonText}>Weather Forcast</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            onPress={weatherPressHandler}
+                            style={styles.weatherButton} >
+                            <Image
+                                source={require('../assets/weather-icon.png')}
+                                style={styles.ButtonIcon}
+                            />
+                            <Text style={styles.ButtonText}>Weather Forcast</Text>
+                        </TouchableOpacity>
+                    </View> */}
+
+
+                </ScrollView>
+            </SafeAreaView>
+
+            {/* <ImageBackground style = {styles.topView} source={require("../assets/images/vegetables.png")}>
                 <Text style = {styles.Head}>Crop Helper</Text>
                 <View>
                     <TouchableOpacity 
@@ -35,40 +92,34 @@ function WelcomeScreen({navigation}) {
                         <Text style={styles.ButtonText}>Disease Detection</Text>
                     </TouchableOpacity>
                 </View>
-            </View>
-            <View style = {styles.introTextView}>
-                <Text style = {styles.introText}>What's New</Text>
-            </View>
-            <View style = {styles.functionView}>
-                <TouchableOpacity 
-                    onPress = {warningPressHandler}
-                    style = {styles.warningButton} > 
-                    <Image 
-                        source={require('../assets/regional-warning-icon.png')}
-                        style={styles.ButtonIcon}
-                    />
-                    <Text style={styles.ButtonText}>Regional Warning</Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    onPress = {weatherPressHandler}
-                    style = {styles.weatherButton} > 
-                    <Image 
-                        source={require('../assets/weather-icon.png')}
-                        style={styles.ButtonIcon}
-                    />
-                    <Text style={styles.ButtonText}>Weather Forcast</Text>
-                </TouchableOpacity>
-            </View>
+            </ImageBackground> */}
+
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#fff"
+    },
+    containerPadding: {
+        padding: 20
+    },
     background: {
         flex: 1,
         justifyContent: 'flex-end',
         alignItems: 'center',
-        backgroundColor: '#FFF'
+        backgroundColor: '#FFF',
+        resizeMode: "contain"
+    },
+    backgroundImage: {
+        flex: 1,
+        resizeMode: 'cover',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     Head: {
         position: 'absolute',
@@ -101,21 +152,21 @@ const styles = StyleSheet.create({
     },
     cameraButton: {
         flexDirection: 'row',
-        alignItems:'center',
+        alignItems: 'center',
         backgroundColor: '#FFF',
         borderRadius: 10,
         flexWrap: 'wrap',
-        alignContent:'center',
+        alignContent: 'center',
     },
-    warningButton : {
+    warningButton: {
         flexDirection: 'row',
-        alignItems:'center',
+        alignItems: 'center',
         backgroundColor: '#FFF',
         borderRadius: 10,
     },
-    weatherButton : {
+    weatherButton: {
         flexDirection: 'row',
-        alignItems:'center',
+        alignItems: 'center',
         backgroundColor: '#FFF',
         borderRadius: 10,
     },
