@@ -16,6 +16,26 @@ const TENSOR_SIZE = {
 
 const TensorCamera = cameraWithTensors(Camera);
 
+const CameraPreview = ({photo}) => {
+  return (
+    <View
+      style={{
+        backgroundColor: 'transparent',
+        flex: 1,
+        width: '100%',
+        height: '100%'
+      }}
+    >
+      <ImageBackground
+        source={{uri: photo && photo.uri}}
+        style={{
+          flex: 1
+        }}
+      />
+    </View>
+  )
+}
+
 export function CustomTensorCamera({ style, width, setIsCapture, ...props }) {
   const sizeStyle = React.useMemo(() => {
     const ratio = width / TEXTURE_SIZE.width;
@@ -29,28 +49,43 @@ export function CustomTensorCamera({ style, width, setIsCapture, ...props }) {
     };
   }, [width]);
 
-  const captureHandler = () => {
+  const [previewVisible, setPreviewVisible] = React.useState(false)
+  const [capturedImage, setCapturedImage] = React.useState(null)
+
+  const captureHandler = async() => {
+    const photo = await TensorCamera.takePictureAsync()
+    setPreviewVisible(true)
+    setCapturedImage(photo)
   }
 
   return (
-    <TensorCamera
-      {...props}
-      style={[style, sizeStyle]}
-      cameraTextureWidth={TEXTURE_SIZE.width}
-      cameraTextureHeight={TEXTURE_SIZE.height}
-      resizeWidth={TENSOR_SIZE.width}
-      resizeHeight={TENSOR_SIZE.height}
-      resizeDepth={3}
-      autorender={false}>
-      <View style = {styles.captureButtonContainer}>
-          <View style={styles.captureButtonInnerContainer}>
-              <TouchableOpacity 
-                style= {styles.captureButton} 
-                onPress = {captureHandler}
-              />
-          </View>
+     previewVisible && capturedImage ? 
+      (<CameraPreview photo={capturedImage} />):
+      (<View>
+        <TensorCamera
+        {...props}
+        style={[style, sizeStyle]}
+        cameraTextureWidth={TEXTURE_SIZE.width}
+        cameraTextureHeight={TEXTURE_SIZE.height}
+        resizeWidth={TENSOR_SIZE.width}
+        resizeHeight={TENSOR_SIZE.height}
+        resizeDepth={3}
+        autorender={false}>
+      </TensorCamera>
+        <View style = {styles.captureButtonContainer}>
+            <View style={styles.captureButtonInnerContainer}>
+                <TouchableOpacity 
+                  style= {styles.captureButton} 
+                  onPress = {() => {
+                    console.log("touched");
+                    captureHandler();}}
+                />
+            </View>
+        </View>
+        
       </View>
-    </TensorCamera>
+      
+      )
   );
 }
 

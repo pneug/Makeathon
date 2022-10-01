@@ -10,6 +10,7 @@ import { useTensorFlowModel } from './useTensorFlow';
 export function ModelView() {
   const model = useTensorFlowModel(mobilenet);
   const [predictions, setPredictions] = React.useState([]);
+  const [isCapture, setIsCapture] = React.useState(false);
 
   if (!model) {
     return <LoadingView message="Loading TensorFlow model" />;
@@ -17,7 +18,7 @@ export function ModelView() {
 
   return (
     <View  style={styles.container} >
-      <PredictionList predictions={predictions} />
+      { isCapture ? null : <PredictionList predictions={predictions} /> }
       <View style={{ borderRadius: 20, overflow: "hidden" }}>
         <ModelCamera model={model} setPredictions={setPredictions} />
       </View>
