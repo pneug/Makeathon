@@ -7,6 +7,7 @@ import {
 import { Title } from 'react-native-paper';
 import { ScrollView } from 'react-native-gesture-handler';
 import { BigCard, SmallCard } from '../components/Cards';
+import {t} from '../assets/IMLocalize';
 
 function WelcomeScreen({navigation}) {
 
@@ -29,7 +30,7 @@ function WelcomeScreen({navigation}) {
                     <BigCard
                         price={" "}
                         image={require("../assets/images/vegetables.png")}
-                        buttonText={"SCAN TOMATO"}
+                        buttonText={t('common.scan')}
                         buttonColor={"#4383FF"}
                         onClickButton={cameraPressHandler}
                     />
@@ -38,15 +39,13 @@ function WelcomeScreen({navigation}) {
                     </View>
 
                     <SmallCard
-                        title={"Regional Warning"}
-                        subTitle={" "}
+                        title={t('common.regional_warning')}
                         profile={require("../assets/regional-warning-icon.png")}
                         onPress={warningPressHandler}
                     />
 
                     <SmallCard
-                        title={"Weather"}
-                        subTitle={" "}
+                        title={t('common.weather')}
                         profile={require("../assets/weather-icon.png")}
                         onPress={weatherPressHandler}
                     />
