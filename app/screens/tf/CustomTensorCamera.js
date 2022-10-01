@@ -53,8 +53,6 @@ export function CustomTensorCamera({ style, width, setIsCapture, ...props }) {
   const [capturedImage, setCapturedImage] = React.useState(null)
 
   const captureHandler = async() => {
-    console.log('hi')
-    console.log(typeof(TensorCamera))
     const photo = await TensorCamera.takePictureAsync()
     setPreviewVisible(true)
     setCapturedImage(photo)
