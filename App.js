@@ -5,6 +5,10 @@ import { Provider as PaperProvider } from 'react-native-paper';
 import Navigator from './app/routes/TabNavigator';
 
 export default function App() {
-  return <Navigator/>;
+  return (
+    <PaperProvider>
+      <Navigator/>
+    </PaperProvider>
+  );
 }
 
