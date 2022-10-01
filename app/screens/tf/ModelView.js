@@ -64,7 +64,7 @@ export function ModelView() {
   return (<View style={styles.container}>
               {previewVisible && capturedImage ? 
                 <View style={styles.container}>
-                  <PredictionList predictions={[]} /> 
+                  <PredictionList predictions={predictions} /> 
                   <CameraPreview photo={capturedImage} />
                 </View> :
                 <View style={styles.container}>
