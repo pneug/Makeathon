@@ -53,6 +53,8 @@ export function CustomTensorCamera({ style, width, setIsCapture, ...props }) {
   const [capturedImage, setCapturedImage] = React.useState(null)
 
   const captureHandler = async() => {
+    console.log('hi')
+    console.log(typeof(TensorCamera))
     const photo = await TensorCamera.takePictureAsync()
     setPreviewVisible(true)
     setCapturedImage(photo)
@@ -76,9 +78,7 @@ export function CustomTensorCamera({ style, width, setIsCapture, ...props }) {
             <View style={styles.captureButtonInnerContainer}>
                 <TouchableOpacity 
                   style= {styles.captureButton} 
-                  onPress = {() => {
-                    console.log("touched");
-                    captureHandler();}}
+                  onPress = {captureHandler}
                 />
             </View>
         </View>
@@ -97,7 +97,8 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     padding: 20,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    zIndex: 10
   },
   captureButtonInnerContainer: {
     alignSelf: 'center',
