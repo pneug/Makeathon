@@ -6,11 +6,8 @@ import zh from './locales/zh';
 
 const translations = {en: en, zh: zh};
 
-console.log('translation: ' + translations.en);
 
 const i18n = new I18n(translations);
-
-console.log(Localization? typeof Localization : "undefined");
 
 let locale = Localization.locale;
 
