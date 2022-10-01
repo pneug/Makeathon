@@ -10,12 +10,12 @@ const Stack = createStackNavigator();
 function HomeStack (props) {
     return (
         <Stack.Navigator
-            initialRoutName="Home"
+            initialRoutName="HomeScreen"
             screenOptions={{headerShown: false}}>
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="Camera" component={CameraScreen} />
-            <Stack.Screen name="Warning" component={WarningScreen} />
-            <Stack.Screen name="Weather" component={WeatherScreen} />
+            <Stack.Screen name="HomeScreen" component={HomeScreen} />
+            <Stack.Screen name="CameraScreen" component={CameraScreen} />
+            <Stack.Screen name="WarningScreen" component={WarningScreen} />
+            <Stack.Screen name="WeatherScreen" component={WeatherScreen} />
         </Stack.Navigator>
     );
 }

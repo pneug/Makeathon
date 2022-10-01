@@ -4,6 +4,7 @@ import {createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import WarningScreen from '../screens/WarningScreen';
 import HomeStack from './HomeStack';
+import { Card } from 'react-native-paper';
 
 
 function TabNavigator () {
