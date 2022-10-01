@@ -7,7 +7,7 @@ import {StyleSheet,
         FlatList,
         TouchableOpacity} from 'react-native';
 
-function HomeScreen({navigation}) {
+function WelcomeScreen({navigation}) {
 
     const cameraPressHandler = () => {
         navigation.navigate('Camera');
@@ -129,4 +129,4 @@ const styles = StyleSheet.create({
     ButtonText: {},
 })
 
-export default HomeScreen;
+export default WelcomeScreen;

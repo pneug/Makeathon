@@ -2,7 +2,6 @@ import * as mobilenet from '@tensorflow-models/mobilenet';
 import { Camera } from 'expo-camera';
 import React from 'react';
 import { StyleSheet, useWindowDimensions, View } from 'react-native';
-
 import { CustomTensorCamera } from './CustomTensorCamera';
 import { LoadingView } from './LoadingView';
 import { PredictionList } from './PredictionList';
@@ -17,9 +16,7 @@ export function ModelView() {
   }
 
   return (
-    <View
-      style={{ flex: 1, backgroundColor: "black", justifyContent: "center" }}
-    >
+    <View  style={styles.container} >
       <PredictionList predictions={predictions} />
       <View style={{ borderRadius: 20, overflow: "hidden" }}>
         <ModelCamera model={model} setPredictions={setPredictions} />
@@ -39,7 +36,7 @@ function ModelCamera({ model, setPredictions }) {
   }, []);
 
   const onReady = React.useCallback(
-    (images) => {
+    (images, updateCameraPreview, gl) => {
       const loop = async () => {
         const nextImageTensor = images.next().value;
         const predictions = await model.classify(nextImageTensor);
@@ -66,6 +63,11 @@ function ModelCamera({ model, setPredictions }) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "black",
+    justifyContent: "center" 
+  },
   camera: {
     zIndex: 0,
   },
