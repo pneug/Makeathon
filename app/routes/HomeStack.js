@@ -11,10 +11,10 @@ function HomeStack (props) {
     return (
         <Stack.Navigator
             screenOptions={{headerShown: false}}>
-            <Stack.Screen name="Welcome" component={WelcomeScreen} />
-            <Stack.Screen name="Camera" component={CameraScreen} />
-            <Stack.Screen name="Warning" component={WarningScreen} />
-            <Stack.Screen name="Weather" component={WeatherScreen} />
+            <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+            <Stack.Screen name="CameraScreen" component={CameraScreen} />
+            <Stack.Screen name="WarningScreen" component={WarningScreen} />
+            <Stack.Screen name="WeatherScreen" component={WeatherScreen} />
         </Stack.Navigator>
     );
 }
