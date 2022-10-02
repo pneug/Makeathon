@@ -82,7 +82,8 @@ export function ModelView() {
     setCapturedImage(photo)
     // const imgTensor = img2tensor(photo.uri, TENSOR_SIZE)
     // const predictions = await model.classify(imgTensor)
-    let prediction = getRandomInt()
+    // let prediction = getRandomInt()
+    let prediction = 0
     setPrediction(prediction)
   }
 
