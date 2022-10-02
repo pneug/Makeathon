@@ -40,7 +40,6 @@ export default function SettingsScreen(props){
         else {
             setlanguageTitle('English')
         }
-
     }
 
     const SMSHandlder = () => {
