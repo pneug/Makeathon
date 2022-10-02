@@ -16,4 +16,8 @@ i18n.enableFallback = true;
 
 const t = i18n.t.bind(i18n);
 
-export {i18n, t};
+const DiseaseInfo = {
+    riskLevel: [1, 2, 3]
+}
+
+export {i18n, t, DiseaseInfo};

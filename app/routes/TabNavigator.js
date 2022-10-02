@@ -7,7 +7,7 @@ import HomeStack from './HomeStack';
 import { Card, Appbar } from 'react-native-paper';
 
 
-function TabNavigator () {
+function TabNavigator (props) {
     const Tab = createBottomTabNavigator();
     return (
         <NavigationContainer>

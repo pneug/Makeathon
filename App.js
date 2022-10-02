@@ -7,7 +7,7 @@ import Navigator from './app/routes/TabNavigator';
 const theme = {
   ...DefaultTheme,
   roundness: 2,
-  version: 2,
+  version: 3,
   colors: {
     ...DefaultTheme.colors,
     primary: '#3498db',

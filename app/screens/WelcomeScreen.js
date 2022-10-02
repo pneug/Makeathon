@@ -21,6 +21,9 @@ function WelcomeScreen({navigation}) {
     const weatherPressHandler = () => {
         navigation.navigate('WeatherScreen');
     }
+    const diseasePressHandler = () => {
+        navigation.navigate('DiseaseScreen')
+    }
 
 
     return (
@@ -48,6 +51,12 @@ function WelcomeScreen({navigation}) {
                         title={t('common.weather')}
                         profile={require("../assets/weather-icon.png")}
                         onPress={weatherPressHandler}
+                    />
+
+                    <SmallCard
+                        title={"disease"}
+                        profile={require("../assets/weather-icon.png")}
+                        onPress={diseasePressHandler}
                     />
                     
 
