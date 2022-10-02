@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { ScrollView } from "react-native-gesture-handler";
 import { List, MD3Colors, View, SafeAreaView} from 'react-native-paper';
 // import { StyleSheet } from "react-native";
+import { useTranslation } from 'react-i18next';
 
 export default function SettingsScreen(props){
+    const { i18n, t } = useTranslation();
     const [cropTitle, setCropTitle] = useState('Cocoa');
     const [languageTitle, setlanguageTitle] = useState('English')
 
@@ -29,9 +31,12 @@ export default function SettingsScreen(props){
     const languageHandler = () => {
         if (languageTitle === 'English'){
             setlanguageTitle('Twi')
+            i18n.changeLanguage('en')
         }
         else {
             setlanguageTitle('English')
+            i18n.changeLanguage('twi')
+            console.log(i18n.languages)
         }
 
     }
