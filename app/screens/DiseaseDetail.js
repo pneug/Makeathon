@@ -57,7 +57,7 @@ function DetailScreen(props) {
                             left={props => <List.Icon {...props} icon="alert" color="white" />}
                         />
                         <List.Item
-                            title={t("common:dummy")}
+                            title={t("no_regional_infection")}
                             titleStyle={{color: "white"}}
                             left={props => <List.Icon {...props} icon="earth" color="white" />}
                         />

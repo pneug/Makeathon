@@ -29,5 +29,6 @@ export default {
     more_about: "More About",
     what_new: "What's New",
     default_crop: "Default Group",
-    language: "Language"
+    language: "Language",
+    no_regional_infection: "No Regional Infection"
 }
