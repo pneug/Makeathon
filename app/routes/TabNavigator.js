@@ -5,15 +5,17 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import SettingsScreen from '../screens/SettingsScreen';
 import HomeStack from './HomeStack';
 import { Card, Appbar } from 'react-native-paper';
+import { useTranslation } from 'react-i18next';
 
 
 function TabNavigator (props) {
+    const {t} = useTranslation()
     const Tab = createBottomTabNavigator();
     return (
         <NavigationContainer>
             <Tab.Navigator screenOptions={{headerShown: true}}>
                 <Tab.Screen 
-                    name="Home"
+                    name={t("navigate:home")}
                     component={HomeStack}
                     options={{
                         tabBarIcon: ({color, size}) => (
@@ -21,7 +23,7 @@ function TabNavigator (props) {
                     )}} 
                 />
                 <Tab.Screen 
-                    name="Settings"
+                    name={t("navigate:setting")}
                     component={SettingsScreen} 
                     options={{
                         tabBarIcon: ({color, size}) => (

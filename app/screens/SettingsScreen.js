@@ -36,22 +36,20 @@ export default function SettingsScreen(props){
         else {
             setlanguageTitle('English')
             i18n.changeLanguage('twi')
-            console.log(i18n.languages)
         }
-
     }
 
     return (
         <ScrollView>
             <List.Section>
                 <List.Item 
-                    title="Default Crop" 
+                    title={t("default_crop")}
                     description={cropTitle}
                     left={cropTypeIcon}
                     onPress= {cropTypeHandler}
                 />
                 <List.Item
-                    title="Language"
+                    title={t("language")}
                     description={languageTitle} 
                     left={languageIcon}
                     onPress= {languageHandler}

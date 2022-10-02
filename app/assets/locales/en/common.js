@@ -20,4 +20,7 @@ export default {
     dummy: "Dummy",
     prevention: "Prevention",
     more_about: "More About",
+    what_new: "What's New",
+    default_crop: "Default Group",
+    language: "Language"
 }

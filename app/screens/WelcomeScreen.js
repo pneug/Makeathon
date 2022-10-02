@@ -38,7 +38,7 @@ function WelcomeScreen({navigation}) {
                         onClickButton={cameraPressHandler}
                     />
                     <View style={styles.containerPadding}>
-                        <Title>What's New</Title>
+                        <Title>{t("what_new")}</Title>
                     </View>
 
                     <SmallCard
