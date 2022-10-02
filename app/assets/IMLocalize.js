@@ -2,9 +2,9 @@ import * as Localization from 'expo-localization';
 import { I18n } from 'i18n-js';
 
 import en from './locales/en';
-import zh from './locales/zh';
+import twi from './locales/twi';
 
-const translations = {en: en, zh: zh};
+const translations = {en: en, twi: twi};
 
 
 const i18n = new I18n(translations);
