@@ -6,7 +6,7 @@ import { StyleSheet, ImageBackground, View, TouchableOpacity } from 'react-nativ
 import * as tf from '@tensorflow/tfjs';
 import {fetch, decodeJpeg} from '@tensorflow/tfjs-react-native';
 import { LoadingView } from './LoadingView';
-import { PredictionList } from './PredictionList';
+import { Prediction } from './Prediction';
 import { useTensorFlowModel } from './useTensorFlow';
 import * as FileSystem from 'expo-file-system';
 import {Buffer} from 'buffer'
@@ -45,7 +45,7 @@ export function ModelView() {
   const model = useTensorFlowModel(mobilenet);
   const [previewVisible, setPreviewVisible] = React.useState(false)
   const [capturedImage, setCapturedImage] = React.useState(null)
-  const [predictions, setPredictions] = React.useState([]);
+  const [prediction, setPrediction] = React.useState(null);
 
   if (!model) {
     return <LoadingView message="Loading TensorFlow model" />;
@@ -72,25 +72,30 @@ export function ModelView() {
     }    
   }
 
+  const getRandomInt = () => {
+    return Math.floor(Math.random() * 2);
+  }
+
   const captureHandler = async() => {
     const photo = await camera.takePictureAsync()
     setPreviewVisible(true)
     setCapturedImage(photo)
-    const imgTensor = img2tensor(photo.uri, TENSOR_SIZE)
-    const predictions = await model.classify(imgTensor)
-    setPredictions(predictions);
+    // const imgTensor = img2tensor(photo.uri, TENSOR_SIZE)
+    // const predictions = await model.classify(imgTensor)
+    let prediction = getRandomInt()
+    setPrediction(prediction)
   }
 
   return (<View style={styles.container}>
               {previewVisible && capturedImage ? 
                 <View style={styles.container}>
-                  <PredictionList predictions={predictions} /> 
+                  <Prediction prediction={prediction} /> 
                   <CameraPreview photo={capturedImage} />
                 </View> :
                 <View style={styles.container}>
                   <ModelCamera 
                     model={model}
-                    setPredictions={setPredictions}
+                    setPredictions={setPrediction}
                     captureHandler={captureHandler}/>
                 </View>
               }
@@ -98,7 +103,7 @@ export function ModelView() {
           );
 }
 
-function ModelCamera({ model, setPredictions, captureHandler }) {
+function ModelCamera({ model, setPrediction, captureHandler }) {
   return React.useMemo(
     () => (
       <Camera 
@@ -113,7 +118,7 @@ function ModelCamera({ model, setPredictions, captureHandler }) {
           </View>
         </View>
       </Camera>
-    ), [setPredictions]);
+    ), [setPrediction]);
 }
 
 const styles = StyleSheet.create({

@@ -1,14 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-export function PredictionList({ predictions = [] }) {
+export function Prediction({ prediction }) {
   return (
     <View style={styles.container}>
-      {predictions.map((p, i) => (
-        <Text style={styles.text} key={`item-${i}`}>
-          {p.className}
+        <Text style={styles.text}>
+          {prediction == 0 ? 'Disease Detected' : 'Healthy'}
         </Text>
-      ))}
     </View>
   );
 }

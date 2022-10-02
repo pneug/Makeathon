@@ -1,0 +1,7 @@
+## Libraries
+- UI Library: [Paper](https://callstack.github.io/react-native-paper/)
+
+
+## Commands
+- Run App: `npx expo start`
+- Update dependencies: `npm install`
