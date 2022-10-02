@@ -1,6 +1,6 @@
 import * as mobilenet from '@tensorflow-models/mobilenet';
 import {Camera} from 'expo-camera'
-let camera: Camera
+let camera;
 import React from 'react';
 import { StyleSheet, ImageBackground, View, TouchableOpacity } from 'react-native';
 import * as tf from '@tensorflow/tfjs';
@@ -8,6 +8,8 @@ import {fetch, decodeJpeg} from '@tensorflow/tfjs-react-native';
 import { LoadingView } from './LoadingView';
 import { PredictionList } from './PredictionList';
 import { useTensorFlowModel } from './useTensorFlow';
+import * as FileSystem from 'expo-file-system';
+import {Buffer} from 'buffer'
 
 const TEXTURE_SIZE = { width: 1080, height: 1920 };
 
@@ -29,6 +31,16 @@ const CameraPreview = ({photo}) => {
   )
 }
 
+function _base64ToArrayBuffer(base64) {
+  var binary_string = window.atob(base64);
+  var len = binary_string.length;
+  var bytes = new Uint8Array(len);
+  for (var i = 0; i < len; i++) {
+      bytes[i] = binary_string.charCodeAt(i);
+  }
+  return bytes.buffer;
+}
+
 export function ModelView() {
   const model = useTensorFlowModel(mobilenet);
   const [previewVisible, setPreviewVisible] = React.useState(false)
@@ -43,13 +55,21 @@ export function ModelView() {
     // image_uri: string, path to image
     // target_size: tuple, (height, weight)
     // return: tensor, shape (1, height, width, 3)
-    const response = await fetch(image_uri, {}, {isBinary: true});
-    const imageDataArrayBuffer = await response.arrayBuffer();
-    // Load image as Unit8Array
-    const imageData = new Uint8Array(imageDataArrayBuffer);
-    const imageTensor = decodeJpeg(imageData); // reterns: a 3D tensor of shape [height, width, 1/3]
-    const resized = tf.image.resizeBilinear(imageTensor, target_size);
-    return resized;
+    console.log('image_uri', image_uri);
+    try {
+      //Read a jpg file with FileSystem      
+      const response = await FileSystem.readAsStringAsync(image_uri, { encoding: FileSystem.EncodingType.Base64 });
+      const imageDataArrayBuffer = Buffer.from(response, "base64");
+      // Load image as Unit8Array
+      const imageData = new Uint8Array(imageDataArrayBuffer);
+      const imageTensor = decodeJpeg(imageData); // reterns: a 3D tensor of shape [height, width, 1/3]
+      console.debug("Decoded tensor type " + typeof imageTensor, "Shape: " + imageTensor.shape);
+      // const resized = tf.image.resizeBilinear(imageTensor, target_size);
+      // console.debug("resized tensor type " + typeof resized, "Shape: " + resized.shape);
+      return imageTensor;
+    } catch (error) {
+      console.error(error);
+    }    
   }
 
   const captureHandler = async() => {
