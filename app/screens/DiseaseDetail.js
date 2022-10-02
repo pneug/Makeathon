@@ -21,7 +21,9 @@ function DetailScreen(props) {
     let rescueMethods = t('common:disease_rescues', { returnObjects: true })[diseaseIdx];
     let diseaseDescription = t('common:disease_description', {returnObjects: true})[diseaseIdx];
     let diseasePreventions = t('common:disease_preventions', { returnObjects: true })[diseaseIdx];
-
+    let rescueImage = t('rescue_image', {returnObjects: true})[diseaseIdx];
+    let diseaseImage = t('disease_image', {returnObjects: true})[diseaseIdx];
+    let preventImage = t('prevention_picture', {returnObjects: true})[diseaseIdx];
     // create style sheet
     const styles = StyleSheet.create({
         container: {
@@ -64,7 +66,7 @@ function DetailScreen(props) {
                 </Surface>
                 <View style={styles.container}>
                 <Card style={styles.card}>
-                    <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+                    <Card.Cover source={{ uri: rescueImage }} />
                     <Card.Content style={styles.content}>
                         <Title>{t("common:rescue")}</Title>
                         {rescueMethods.map((method, i)=>{
@@ -76,7 +78,7 @@ function DetailScreen(props) {
                     </Card.Actions>
                 </Card>
                 <Card style={styles.card}>
-                    <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+                    <Card.Cover source={{ uri: preventImage }} />
                     <Card.Content style={styles.content}>
                         <Title>{t("common:prevention")}</Title>
                         {diseasePreventions.map((prevention, i)=>{
@@ -88,7 +90,7 @@ function DetailScreen(props) {
                     </Card.Actions>
                 </Card>
                 <Card style={styles.card}>
-                    <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+                    <Card.Cover source={{ uri: diseaseImage }} />
                     <Card.Content style={styles.content}>
                         <Title>{t("common:more_about") + ' ' + diseaseName}</Title>
                         <Paragraph>{diseaseDescription}</Paragraph>
