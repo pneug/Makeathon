@@ -6,7 +6,7 @@ import { StyleSheet, ImageBackground, View, TouchableOpacity } from 'react-nativ
 import * as tf from '@tensorflow/tfjs';
 import {fetch, decodeJpeg} from '@tensorflow/tfjs-react-native';
 import { LoadingView } from './LoadingView';
-import { PredictionList } from './PredictionList';
+import { Prediction } from './Prediction';
 import { useTensorFlowModel } from './useTensorFlow';
 import * as FileSystem from 'expo-file-system';
 import {Buffer} from 'buffer'
@@ -89,7 +89,7 @@ export function ModelView() {
   return (<View style={styles.container}>
               {previewVisible && capturedImage ? 
                 <View style={styles.container}>
-                  <PredictionList prediction={prediction} /> 
+                  <Prediction prediction={prediction} /> 
                   <CameraPreview photo={capturedImage} />
                 </View> :
                 <View style={styles.container}>
