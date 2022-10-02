@@ -11,6 +11,8 @@ import { useTensorFlowModel } from './useTensorFlow';
 export function ModelView() {
   const model = useTensorFlowModel(mobilenet);
   const [predictions, setPredictions] = React.useState([]);
+  
+  //console.debug("sdf");
 
   if (!model) {
     return <LoadingView message="Loading TensorFlow model" />;

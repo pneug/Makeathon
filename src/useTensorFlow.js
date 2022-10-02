@@ -6,12 +6,12 @@ import { fetch, decodeJpeg, bundleResourceIO } from '@tensorflow/tfjs-react-nati
 
 async function myFunction() {
 
-  const modelUrl_tomato ="https://tensroflowjs.s3.eu-central-1.amazonaws.com/tomato_model_tfjs/model.json";
-  const model = await tf.loadLayersModel(modelUrl_tomato);
 
+  const modelUrl_tomato ="https://tensroflowjs.s3.eu-central-1.amazonaws.com/model_github_inception/model.json";
+  //const model = await tf.loadLayersModel(modelUrl_tomato);
 
-  //const modelUrl ="https://tensroflowjs.s3.eu-central-1.amazonaws.com/model_final/model.json";
-  //const model = await tf.loadGraphModel(modelUrl);
+  const modelUrl ="https://tensroflowjs.s3.eu-central-1.amazonaws.com/model_final/model.json";
+  const model = await tf.loadGraphModel(modelUrl);
 
   //const modelUrl = "https://tfhub.dev/google/tfjs-model/imagenet/mobilenet_v2_130_224/classification/3/default/1";
   //const model = await tf.loadGraphModel(modelUrl, { fromTFHub: true });
@@ -21,7 +21,7 @@ async function myFunction() {
 
   //const model = await mobilenet.load();
 
-  const zeros = tf.zeros([0,112,112,3]);
+  const zeros = tf.zeros([0,224,224,3]);
 
   const prediction = model.predict(zeros);
   //const prediction = model.classify(zeros);
