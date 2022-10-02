@@ -6,7 +6,7 @@ export default {
     disease_image: ["https://cocoarunners.com/acd-cgi/img/v1/wp-content/uploads/2022/05/unnamed-1-1.jpg?metadata=none&width=900",
                 "https://www.nature-and-garden.com/wp-content/uploads/sites/4/2022/02/phytophthora-lifecycle.jpg"],
     
-    rescue_image: ["https://gmw.nyc3.cdn.digitaloceanspaces.com/wp-content/uploads/2022/07/8-2-PORTABLE-fireplace-fire-safety.jpeg",
+    rescue_image: ["https://www.outsideonline.com/wp-content/uploads/2016/10/18/campfire-endangered_h.jpg?crop=25:14&width=500&enable=upscale",
     "https://gmw.nyc3.cdn.digitaloceanspaces.com/wp-content/uploads/2022/07/8-2-PORTABLE-fireplace-fire-safety.jpeg"],
     disease_description: ["Monilinia is a genus of fungi in the family Sclerotiniaceae. Monilinia fungi are pathogens to Rosaceae and Ericaceae and often cause major losses to crops.", 
         "Phytophthora is a genus of plant-damaging oomycetes, whose member species are capable of causing enormous economic losses on crops worldwide, as well as environmental damage in natural ecosystems."],
